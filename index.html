@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <link rel="stylesheet" type="text/css" href="styles/animate.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jcanvas/20.1.2/jcanvas.js"></script>
+    <script data-main="scripts/main" src="scripts/require.js"></script>
+</head>
+
+<body background="styles/resources/vintage-concrete.png" style="font-family: 'Courgette', cursive;">
+    <div class="wrapper">
+        <div>
+            <button class="button" onClick="reset()">Reset game</button>
+            <button class="button" onClick="changePlayerBefore()">Change starting player</button>
+        </div>
+        <div class="score_board">
+            <h3>Score</h3>
+            <ul class="games" , id="games"></ul>
+            <div>
+                <div class="score_text Xwins">
+                    <span id="xWins"></span>
+                </div>
+                <div class="score_text Owins">
+                    <span id="oWins"></span>
+                </div>
+                <div class="score_text draws">
+                    <span id="draws"></span>
+                </div>
+            </div>
+        </div>
+        <div class="inside_wrapper">
+            <div>
+                <span id="welcome_text" class="welcome_screen">Welcome! Now playing: X </span>
+            </div>
+            <div class="canvas_wrapper">
+                <canvas id="helper" class="canvas"></canvas>
+                <canvas id="board" class="canvas"></canvas>
+            </div>
+            <div class="side_bar">
+                <h3>Moves</h3>
+                <ul class="moves" , id="moves"></ul>
+                <button id="reverseButton" class="button">Reverse move</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="resetModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header-info">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Some text in the modal.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-danger btn-ok">Confirm</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="resultModal" class="modal fade modal-success" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header-success">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Some text in the modal.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="drawModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header-info">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Oh my!</h4>
+                </div>
+                <div class="modal-body">
+                    <p>It's a draw!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="warningModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header-info">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Warning!</h4>
+                </div>
+                <div class="modal-body">
+                    <p>You can't change player during game!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
