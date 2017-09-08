@@ -1,8 +1,8 @@
 'use strict'
 
-var MovesService = function () {
+var MovesService = (function () {
 
-    this.addToHistory = function (x, y, player) {
+    var addToHistory = function (x, y, player) {
         var move = {
             x: x,
             y: y,
@@ -13,10 +13,10 @@ var MovesService = function () {
         return move;
     }
 
-    this.reverseMove = function () {
+    var reverseMove = function () {
         if (moves.length > 0 && !finished) {
-            var toReverse = moves.pop();
-            var position = (toReverse.x + (toReverse.y - 1) * 3) - 1;
+            var toReverse = moves.pop(),
+                position = (toReverse.x + (toReverse.y - 1) * 3) - 1;
             board[position] = null;
             $('.moves li:last-child').remove();
             return {
@@ -32,11 +32,17 @@ var MovesService = function () {
         }
     }
 
-    this.addToHistoryList = function (x, y, player) {
+    var addToHistoryList = function (x, y, player) {
         var ul = document.getElementById("moves"),
             li = document.createElement("li");
         li.className += 'animated fadeIn';
         li.appendChild(document.createTextNode("[" + x + "," + y + "] " + player));
         ul.appendChild(li);
     }
-}
+
+    return {
+        addToHistory: addToHistory,
+        reverseMove: reverseMove,
+        addToHistoryList: addToHistoryList
+    };
+})();

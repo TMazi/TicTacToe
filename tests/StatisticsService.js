@@ -1,12 +1,10 @@
 describe("Test suit for StatisticsService", function () {
 
-    var statisticsService = new StatisticsService();
-
     it("Should return empty points", function () {
         games = [];
 
-        spyOn(statisticsService, 'displayPoints');
-        var result = statisticsService.countGames();
+        spyOn(StatisticsService, 'displayPoints');
+        var result = StatisticsService.countGames();
         expect(result).toBe(undefined);
     });
 
@@ -18,8 +16,8 @@ describe("Test suit for StatisticsService", function () {
         }
         games.push(game);
 
-        spyOn(statisticsService, 'displayPoints');
-        var result = statisticsService.countGames();
+        spyOn(StatisticsService, 'displayPoints');
+        var result = StatisticsService.countGames();
 
         expect(result.xWins).toBe(1);
         expect(result.oWins).toBe(0);

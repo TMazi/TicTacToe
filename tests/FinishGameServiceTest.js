@@ -1,13 +1,10 @@
 describe("Test suit for FinishGameService", function () {
 
-  var finishService = new FinishGameService();
-
   it("Should return false (game unfinished)", function () {
-    var winnerChecker = new WinnerChecker();
 
-    spyOn(winnerChecker, "checkWin").and.returnValue(false);
+    spyOn(WinnerChecker, "checkWin").and.returnValue(false);
 
-    var result = finishService.isEnd();
+    var result = FinishGameService.isEnd();
 
     expect(result).toBe(false);
   });
@@ -16,11 +13,11 @@ describe("Test suit for FinishGameService", function () {
 
     moves.length = 9;
 
-    spyOn(finishService, "drawGame");
+    spyOn(FinishGameService, "drawGame");
 
-    var result = finishService.isEnd();
+    var result = FinishGameService.isEnd();
 
-    expect(finishService.drawGame).toHaveBeenCalled();
+    expect(FinishGameService.drawGame).toHaveBeenCalled();
     expect(result).toBe(true);
   })
 
@@ -31,13 +28,11 @@ describe("Test suit for FinishGameService", function () {
     board[1] = 'X';
     board[2] = 'X';    
 
-    var winnerChecker = new WinnerChecker();
+    spyOn(FinishGameService, "endGame");
 
-    spyOn(finishService, "endGame");
+    var result = FinishGameService.isEnd();
 
-    var result = finishService.isEnd();
-
-    expect(finishService.endGame).toHaveBeenCalled();
+    expect(FinishGameService.endGame).toHaveBeenCalled();
     expect(result).toBe(true);
   })
 });

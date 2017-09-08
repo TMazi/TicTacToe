@@ -1,8 +1,8 @@
 'use strict'
 
-var StatisticsService = function () {
+var StatisticsService = (function () {
 
-    this.countGames = function () {
+    var countGames = function () {
         if (games.length > 0) {
             var points = {
                 xWins: 0,
@@ -21,12 +21,16 @@ var StatisticsService = function () {
         }
     }
 
-    this.displayPoints = function(points) {
-            if (points.xWins > 0)
-                document.getElementById('xWins').textContent = 'Player "X" won: ' + points.xWins;
-            if (points.oWins > 0)
-                document.getElementById('oWins').textContent = 'Player "O" won: ' + points.oWins;
-            if (points.draws > 0)
-                document.getElementById('draws').textContent = 'Drawn: ' + points.draws;
+    var displayPoints = function (points) {
+        if (points.xWins > 0)
+            document.getElementById('xWins').textContent = 'Player "X" won: ' + points.xWins;
+        if (points.oWins > 0)
+            document.getElementById('oWins').textContent = 'Player "O" won: ' + points.oWins;
+        if (points.draws > 0)
+            document.getElementById('draws').textContent = 'Drawn: ' + points.draws;
     }
-}
+    return {
+        countGames: countGames,
+        displayPoints: displayPoints
+    };
+})();

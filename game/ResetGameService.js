@@ -1,10 +1,8 @@
 'use strict'
 
-var ResetGameService = function () {
+var ResetGameService = (function () {
 
-    var drawingService = new DrawingService();
-
-    this.reset = function () {
+    var reset = function () {
         if (!finished)
             $('#resetModal').modal('show');
         else {
@@ -18,19 +16,24 @@ var ResetGameService = function () {
         }
     }
 
-    this.resetGame = function () {
+    var resetGame = function () {
         board = [];
         moves = [];
         player = 'X';
-        var canvas = document.getElementById('board');
+        var canvas = document.getElementById('board'),
+            ul = document.getElementById("moves"),
+            span = document.getElementById('welcome_text');
         context.clearRect(0, 0, canvas.width, canvas.height);
-        var ul = document.getElementById("moves");
         while (ul.firstChild) {
             ul.removeChild(ul.firstChild);
         }
-        var span = document.getElementById('welcome_text');
         span.textContent = 'Now playing: ' + player;
-        drawingService.drawLines(200, 600);
+        DrawingService.drawLines(200, 600);
         $('.score_text').removeClass('animated flash');
     }
-}
+
+    return {
+        reset: reset,
+        resetGame: resetGame
+    };
+})();

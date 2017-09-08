@@ -1,8 +1,8 @@
 'use strict'
 
-var WinnerChecker = function () {
+var WinnerChecker = (function () {
 
-    this.checkWin = function (board, player) {
+    var checkWin = function (board, player) {
         var winCombinations = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
         for (var i = 0; i < winCombinations.length; i++) {
             var combination = winCombinations[i],
@@ -16,4 +16,7 @@ var WinnerChecker = function () {
         }
         return false;
     }
-}
+    return {
+        checkWin: checkWin
+    };
+})();

@@ -1,8 +1,8 @@
 'use strict'
 
-var DrawingService = function () {
+var DrawingService = (function () {
 
-    this.drawLines = function (sectionSize, canvasSize) {
+    var drawLines = function (sectionSize, canvasSize) {
         var start = 30,
             lenght = canvasSize - 30;
         context.lineWidth = 3;
@@ -23,7 +23,7 @@ var DrawingService = function () {
         context.stroke();
     }
 
-    this.drawCircle = function (canvas, x, y) {
+    var drawCircle = function (canvas, x, y) {
         var centerX = (canvas.width / 6) * (2 * x - 1),
             centerY = (canvas.height / 6) * (2 * y - 1),
             radius = 60;
@@ -47,7 +47,7 @@ var DrawingService = function () {
         context.restore();
     }
 
-    this.drawCross = function(canvas, x, y) {
+    var drawCross = function (canvas, x, y) {
         var centerX = (canvas.width / 6) * (2 * x - 1),
             centerY = (canvas.height / 6) * (2 * y - 1),
             lenght = 60;
@@ -72,9 +72,16 @@ var DrawingService = function () {
         context.restore();
     }
 
-    this.deleteFromBoard = function(x, y) {
-        var canvas = document.getElementById('board');
-        var someSize = (canvas.width / 3);
+    var deleteFromBoard = function (x, y) {
+        var canvas = document.getElementById('board'),
+            someSize = (canvas.width / 3);
         context.clearRect(someSize * (x - 1) + 15, someSize * (y - 1) + 15, someSize - 30, someSize - 30);
     }
-}
+
+    return {
+        drawLines: drawLines,
+        drawCircle: drawCircle,
+        drawCross: drawCross,
+        deleteFromBoard: deleteFromBoard
+    };
+})();

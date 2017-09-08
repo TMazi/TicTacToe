@@ -1,11 +1,9 @@
 'use strict'
 
-var FinishGameService = function () {
+var FinishGameService = (function () {
 
-    var winnerChecker = new WinnerChecker();
-
-    this.isEnd = function () {
-        if (winnerChecker.checkWin(board, player)) {
+    var isEnd = function () {
+        if (WinnerChecker.checkWin(board, player)) {
             this.endGame()
             return true;
         }
@@ -16,7 +14,7 @@ var FinishGameService = function () {
         else return false;
     }
 
-    this.endGame = function () {
+    var endGame = function () {
         $("." + player + "wins").addClass('animated flash');
         $('#resultModal').modal('show');
         var game = {
@@ -35,7 +33,7 @@ var FinishGameService = function () {
         finished = true;
     }
 
-    this.drawGame = function(){
+    var drawGame = function () {
         $(".draws").addClass('animated flash');
         $('#drawModal').modal('show');
         var game = {
@@ -53,4 +51,10 @@ var FinishGameService = function () {
         ul.appendChild(li);
         finished = true;
     }
-}
+
+    return {
+        isEnd: isEnd,
+        endGame: endGame,
+        drawGame: drawGame
+    };
+})();

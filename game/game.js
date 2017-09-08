@@ -10,13 +10,13 @@ board.length = 9;
 
 function reverseMove() {
     var position = new MovesService().reverseMove();
-    new DrawingService().deleteFromBoard(position.x, position.y);
+    DrawingService.deleteFromBoard(position.x, position.y);
 }
 
 function changePlayerBefore() {
-    new GameService().changePlayer();
+    GameService.changePlayer();
 }
 
 function reset() {
-    new ResetGameService().reset();
+    ResetGameService.reset();
 }

@@ -4,7 +4,7 @@ $(document).ready(function () {
         reverseButton = document.getElementById('reverseButton');
 
     reverseButton.addEventListener("click", reverseMove);
-    canvas.addEventListener("click", new GameService().onBoardClick);
+    canvas.addEventListener("click", GameService.onBoardClick);
     context = canvas.getContext('2d');
     var canvasSize = 600;
     var sectionSize = canvasSize / 3;
@@ -12,7 +12,7 @@ $(document).ready(function () {
     canvas.height = canvasSize;
     helper.width = canvasSize;
     helper.height = canvasSize;
-    new DrawingService().drawLines(sectionSize, canvasSize);
+    DrawingService.drawLines(sectionSize, canvasSize);
 });
 
 $(function () {
@@ -72,7 +72,7 @@ $(function () {
                     $('#board').removeClass('animated shake');
                 }, 2000);
                 finished = false;
-                new ResetGameService().resetGame();
+                ResetGameService.resetGame();
             });
         })
     });
